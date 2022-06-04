@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Square Progression </title>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <style>
+    .draggable {
+      border: 3px solid orange;
+    }
+
+    #displayData {
+      width: 85vw;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class='draggable' id='root'></div>
+  <div class='draggable'>
+    <form id='displayData'>
+      <input type="radio" class="form" id="first" name="squarePoint" value="0" />
+      <label for="first"> 0 </label>
+      <input type="radio" class="form" id="second" name="squarePoint" value="1" />
+      <label for="second"> 1 </label>
+      <input type="radio" class="form" id="third" name="squarePoint" value="2" />
+      <label for="third"> 2 </label>
+      <input type="radio" class="form" id="fourth" name="squarePoint" value="3" />
+      <label for="fourth"> 3 </label> <br />
+      <div id='squares'></div> <span id='squaresLabel'></span>
+      <div id='angle'></div> <span id='angleLabel'></span>
+    </form>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script src="terceiro.js"> </script>
+</body>
+
+</html>
