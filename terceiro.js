@@ -50,7 +50,9 @@ function generateSVG() {
 function calculateScale(angle) {
   // Essa parte faz a escala fazer com que a largura do quadrado seja igual à hipotenusa do triângulo gerado pelo ângulo em questão, o efeito pode ser visto melhor usando o ponto 0 
   const radians = angle * Math.PI / 180;
-  return 1 / Math.cos(radians);
+  if (angle <= 45)
+    return 1 / Math.cos(radians);
+  else return 1 / Math.sin(radians);
   // Essa parte utiliza uma escala fixa, altere à gosto
   // return 1.2; 
 }
