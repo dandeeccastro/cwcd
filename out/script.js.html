@@ -1,4 +1,32 @@
-const rVotoPara = document.querySelector('.esquerda .rotulo.r1 span')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const rVotoPara = document.querySelector('.esquerda .rotulo.r1 span')
 const rCargo = document.querySelector('.esquerda .rotulo.r2 span')
 const numeros = document.querySelector('.esquerda .rotulo.r3')
 const rDescricao = document.querySelector('.esquerda .rotulo.r4')
@@ -65,10 +93,10 @@ function comecarEtapa() {
   rNomeVice.style.display = 'none'
   rRodape.style.display = 'none'
 
-  for (let i = 0; i < etapa['numeros']; i++) {
+  for (let i = 0; i &lt; etapa['numeros']; i++) {
     let pisca = i == 0 ? ' pisca' : ''
     numeros.innerHTML += `
-        <div class="numero${pisca}"></div>
+        &lt;div class="numero${pisca}">&lt;/div>
         `
   }
 
@@ -141,7 +169,7 @@ function clicar(value) {
   console.log(value)
 
   let elNum = document.querySelector('.esquerda .rotulo.r3 .numero.pisca')
-  if (elNum && ! votoEmBranco) {
+  if (elNum &amp;&amp; ! votoEmBranco) {
     numeroDigitado += (value)
     elNum.innerHTML = value
     elNum.classList.remove('pisca')
@@ -255,7 +283,7 @@ function confirmar() {
     etapaAtual++
   } else {
     document.querySelector('.tela').innerHTML = `
-        <div class="fim">FIM</div>
+        &lt;div class="fim">FIM&lt;/div>
         `
   }
 
@@ -268,28 +296,53 @@ function resultados() {
   ajax('http://localhost:8080/resultados', 'GET', (response) => {
     const resultados = JSON.parse(response);
 
-    const vereadores = resultados.filter((item) => item.tipo == 'vereador').sort((a, b) => a.votos < b.votos);
-    const prefeitos = resultados.filter((item) => item.tipo == 'prefeito').sort((a, b) => a.votos < b.votos);
+    const vereadores = resultados.filter((item) => item.tipo == 'vereador').sort((a, b) => a.votos &lt; b.votos);
+    const prefeitos = resultados.filter((item) => item.tipo == 'prefeito').sort((a, b) => a.votos &lt; b.votos);
 
     const vereadorTable = document.getElementById('vereador_table');
     const prefeitoTable = document.getElementById('prefeito_table');
 
-    let vereadorTableHTML = "<table><tbody><tr><th>Nome</th><th>Código</th><th>Partido</th><th>Votos</th></tr>";
+    let vereadorTableHTML = "&lt;table>&lt;tbody>&lt;tr>&lt;th>Nome&lt;/th>&lt;th>Código&lt;/th>&lt;th>Partido&lt;/th>&lt;th>Votos&lt;/th>&lt;/tr>";
     for (const vereador of vereadores)
-      vereadorTableHTML += `<tr><td>${vereador.nome}</td><td>${vereador.codigo}</td><td>${vereador.partido}</td><td>${vereador.votos}</td></tr>`
-    vereadorTableHTML += "</tbody></table>";
+      vereadorTableHTML += `&lt;tr>&lt;td>${vereador.nome}&lt;/td>&lt;td>${vereador.codigo}&lt;/td>&lt;td>${vereador.partido}&lt;/td>&lt;td>${vereador.votos}&lt;/td>&lt;/tr>`
+    vereadorTableHTML += "&lt;/tbody>&lt;/table>";
     vereadorTable.innerHTML = vereadorTableHTML;
 
-    let prefeitoTableHTML = "<table><tbody><tr><th>Nome</th><th>Código</th><th>Partido</th><th>Vice</th><th>Partido do Vice</th><th>Votos</th></tr>";
+    let prefeitoTableHTML = "&lt;table>&lt;tbody>&lt;tr>&lt;th>Nome&lt;/th>&lt;th>Código&lt;/th>&lt;th>Partido&lt;/th>&lt;th>Vice&lt;/th>&lt;th>Partido do Vice&lt;/th>&lt;th>Votos&lt;/th>&lt;/tr>";
     for (const prefeito of prefeitos)
-      prefeitoTableHTML += `<tr><td>${prefeito.nome}</td><td>${prefeito.codigo}</td><td>${prefeito.partido || 'XXX'}</td><td>${prefeito.vice_nome || 'XXX'}</td><td>${prefeito.vice_partido || 'XXX'}</td><td>${prefeito.votos}</td></tr>`
-    prefeitoTableHTML += "</tbody></table>";
+      prefeitoTableHTML += `&lt;tr>&lt;td>${prefeito.nome}&lt;/td>&lt;td>${prefeito.codigo}&lt;/td>&lt;td>${prefeito.partido || 'XXX'}&lt;/td>&lt;td>${prefeito.vice_nome || 'XXX'}&lt;/td>&lt;td>${prefeito.vice_partido || 'XXX'}&lt;/td>&lt;td>${prefeito.votos}&lt;/td>&lt;/tr>`
+    prefeitoTableHTML += "&lt;/tbody>&lt;/table>";
     prefeitoTable.innerHTML = prefeitoTableHTML;
   })
 }
 
 /** Reinicia a eleição, zerando os votos no banco de dados */
 function restart() {
-  const req = new Request("http://localhost:8080/reset", { method: 'POST' });
+  const req = new Request("http://localhost:8080/reset", {
+    method: 'POST',
+  });
   fetch(req).then((response) => console.log(response));
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ajax">ajax</a></li><li><a href="global.html#atualizarInterface">atualizarInterface</a></li><li><a href="global.html#branco">branco</a></li><li><a href="global.html#clicar">clicar</a></li><li><a href="global.html#comecarEtapa">comecarEtapa</a></li><li><a href="global.html#confirmar">confirmar</a></li><li><a href="global.html#corrigir">corrigir</a></li><li><a href="global.html#restart">restart</a></li><li><a href="global.html#resultados">resultados</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Jul 30 2022 18:23:49 GMT-0300 (Horário Padrão de Brasília)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
