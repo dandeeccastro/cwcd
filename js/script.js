@@ -18,7 +18,7 @@ var etapas = null
 var numeroDigitado = ''
 var votoEmBranco = false
 
-ajax('http://localhost:8080/etapas', 'GET', (response) => {
+ajax('https://urna-eletronica-cwdc-2022.herokuapp.com/etapas', 'GET', (response) => {
   etapas = JSON.parse(response)
   console.log(etapas)
 
@@ -205,7 +205,7 @@ function confirmar() {
         'etapa': etapa['titulo'],
         'numero': numeroDigitado
       })
-      const req = new Request(`http://localhost:8080/vote/${etapa.titulo}`, {
+      const req = new Request(`https://urna-eletronica-cwdc-2022.herokuapp.com/vote/${etapa.titulo}`, {
         method: 'POST',
         body: JSON.stringify({
           'code': numeroDigitado,
@@ -220,7 +220,7 @@ function confirmar() {
         'etapa': etapa['titulo'],
         'numero': null
       })
-      const req = new Request(`http://localhost:8080/vote/${etapa.titulo}`, {
+      const req = new Request(`https://urna-eletronica-cwdc-2022.herokuapp.com/vote/${etapa.titulo}`, {
         method: 'POST',
         body: JSON.stringify({
           'code': null,
@@ -236,7 +236,7 @@ function confirmar() {
       'etapa': etapa['titulo'],
       'numero': ''
     })
-    const req = new Request(`http://localhost:8080/vote/${etapa.titulo}`, {
+    const req = new Request(`https://urna-eletronica-cwdc-2022.herokuapp.com/vote/${etapa.titulo}`, {
       method: 'POST',
       body: JSON.stringify({
         'code': '',
@@ -265,7 +265,7 @@ function confirmar() {
 
 /** Gera a tabela de resultados da eleição */
 function resultados() {
-  ajax('http://localhost:8080/resultados', 'GET', (response) => {
+  ajax('https://urna-eletronica-cwdc-2022.herokuapp.com/resultados', 'GET', (response) => {
     const resultados = JSON.parse(response);
 
     const vereadores = resultados.filter((item) => item.tipo == 'vereador').sort((a, b) => a.votos < b.votos);
@@ -290,6 +290,6 @@ function resultados() {
 
 /** Reinicia a eleição, zerando os votos no banco de dados */
 function restart() {
-  const req = new Request("http://localhost:8080/reset", { method: 'POST' });
+  const req = new Request("https://urna-eletronica-cwdc-2022.herokuapp.com/reset", { method: 'POST' });
   fetch(req).then((response) => console.log(response));
 }
